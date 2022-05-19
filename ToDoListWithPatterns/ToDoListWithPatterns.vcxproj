@@ -145,10 +145,16 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DateOfCompletion.h" />
     <ClInclude Include="Func.h" />
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="ListOfTasks.h" />
     <ClInclude Include="Logo.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Priority.h" />
+    <ClInclude Include="Prototype.h" />
+    <ClInclude Include="Strategy.h" />
+    <ClInclude Include="Task.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

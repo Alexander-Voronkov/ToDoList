@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Logo.h"
+#include "ListOfTasks.h"
 
 
 
@@ -75,15 +75,15 @@ public:
 		return pos;
 	}
 
-	template<class T>
-	static int select_vertical(std::vector <T> menu, HorizontalAlignment ha, int y = 12)
+
+	static int select_vertical(std::vector <Prototype*> menu, HorizontalAlignment ha, int y = 12)
 	{
 		std::setlocale(0, "UKR");
 		int maxLen = 0;
 		for (size_t i = 0; i < menu.size(); i++)
 		{
-			if (menu[i].length() > maxLen)
-				maxLen = menu[i].length();
+			if (dynamic_cast<Task*>(menu[i])->length() > maxLen)
+				maxLen = dynamic_cast<Task*>(menu[i])->length();
 		}
 		int x = 0;
 		switch (ha)
@@ -104,7 +104,7 @@ public:
 					gotoxy(x, y + i);
 					std::cout << std::setw(maxLen) << std::left;
 					gotoxy(x, y + i);
-					std::cout << menu[i] << std::endl;
+					std::cout << (* dynamic_cast<Task*>(menu[i])) << std::endl;
 					SetColor(15, 0);
 				}
 				else
@@ -113,7 +113,7 @@ public:
 					gotoxy(x, y + i);
 					std::cout << std::setw(maxLen) << std::left;
 					gotoxy(x, y + i);
-					std::cout << menu[i] << std::endl;
+					std::cout << (*dynamic_cast<Task*>(menu[i])) << std::endl;
 				}
 			}
 			c = _getch();
@@ -132,13 +132,13 @@ public:
 			gotoxy(x, y + pos);
 			std::cout << std::setw(maxLen) << std::left;
 			gotoxy(x, y + pos);
-			std::cout << menu[pos] << std::endl;
+			std::cout << (*dynamic_cast<Task*>(menu[pos])) << std::endl;
 			Sleep(300);
 			SetColor(0, 15);
 			gotoxy(x, y + pos);
 			std::cout << std::setw(maxLen) << std::left;
 			gotoxy(x, y + pos);
-			std::cout << menu[pos] << std::endl;
+			std::cout << (*dynamic_cast<Task*>(menu[pos])) << std::endl;
 			SetColor(15, 0);
 			Sleep(300);
 		}
